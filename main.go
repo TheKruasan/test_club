@@ -303,11 +303,9 @@ func main() {
 	stayInClub := []string{}
 	for i, v := range visitors {
 
-		if v != 0 {
+		if v != 0 && v != -1 {
+			//надо считать кто остался за компьютерами во время работы клуба
 			stayInClub = append(stayInClub, i)
-			if v == -1 {
-				continue
-			}
 			empty_comps++
 			computers[v-1].inWork = false
 			//получаем время в которое посетитель сел за компьютер
@@ -330,15 +328,18 @@ func main() {
 			computers[v-1].start = 0
 		}
 	}
+	//считываем кто остался в очереди
 	for root != nil {
 		stayInClub = append(stayInClub, root.name)
 		root = root.next
 	}
+	//выводим информацию о покидании клуба клиентов оставшиеся в нем при закрытии
 	for _, name := range stayInClub {
 		fmt.Print(end, " ", 11, " ", name, "\n")
 	}
-
+	//выводим время закрытия
 	fmt.Print(end)
+	//выводим информацию о компьютерах за день
 	for _, comp := range computers {
 		fmt.Print("\n", comp.id, " ", comp.value, " ", minutesInString(comp.time_in_work))
 	}
