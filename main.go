@@ -77,7 +77,6 @@ func main() {
 		fmt.Print("Enter the correct number of computers\n")
 		log.Fatal(err)
 	}
-	fmt.Println(number_of_pc)
 
 	// получаем время начала работы и конца работы
 	start, end := substrings[1][:5], substrings[1][6:]
@@ -107,7 +106,6 @@ func main() {
 		return
 	}
 	end_time := end_hour*60 + end_minute
-	fmt.Println(start_time, "-", end_time)
 
 	//считываем почасовую оплату
 	price_str := substrings[2]
@@ -116,7 +114,6 @@ func main() {
 		fmt.Println("Ошибка при чтении цены\n", err)
 		return
 	}
-	fmt.Println("Цена ", price)
 
 	fmt.Println(start)
 	// Создадим пусты столы в количестве number_of_pc
